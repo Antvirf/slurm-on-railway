@@ -43,6 +43,9 @@ RUN curl -O https://download.schedmd.com/slurm/slurm-${SLURM_VERSION}.tar.bz2 &&
         #--with-freeipmi
     make install
 
+RUN mkdir -p /etc/slurm /var/spool/slurmctld
+COPY slurm.conf /etc/slurm/slurm.conf
+
 EXPOSE 6817
 
 # -D = run in foreground
