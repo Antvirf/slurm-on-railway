@@ -48,8 +48,11 @@ COPY slurm.conf /etc/slurm/slurm.conf
 COPY create-slurm-key.sh /usr/local/bin/create-slurm-key.sh
 RUN chmod +x /usr/local/bin/create-slurm-key.sh && /usr/local/bin/create-slurm-key.sh
 
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
 EXPOSE 6817
 
 # -D = run in foreground
 WORKDIR /bin/sbin
-ENTRYPOINT ["/bin/sbin/slurmctld", "-D"]
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
