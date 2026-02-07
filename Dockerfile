@@ -23,7 +23,8 @@ RUN apt-get install -y \
     libjson-c-dev \
     libhttp-parser-dev \
     libyaml-dev \
-    libdbus-1-dev
+    libdbus-1-dev \
+    gettext-base
 
 # Download slurm, extract and compile
 ENV SLURM_VERSION=24.11.3
@@ -44,7 +45,7 @@ RUN curl -O https://download.schedmd.com/slurm/slurm-${SLURM_VERSION}.tar.bz2 &&
     make install
 
 RUN mkdir -p /etc/slurm /var/spool/slurmctld /var/run /var/log/slurm
-COPY slurm.conf /etc/slurm/slurm.conf
+COPY slurm.conf.template /etc/slurm/slurm.conf.template
 COPY create-slurm-key.sh /usr/local/bin/create-slurm-key.sh
 RUN chmod +x /usr/local/bin/create-slurm-key.sh && /usr/local/bin/create-slurm-key.sh
 

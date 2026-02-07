@@ -1,0 +1,12 @@
+ClusterName=slurm-production
+SlurmctldHost=${SLURM_HOSTNAME}(${SLURM_PROXY_HOST})
+SlurmctldPort=${SLURM_PROXY_PORT}
+AuthType=auth/slurm
+CredType=cred/slurm
+SlurmUser=root
+StateSaveLocation=/var/spool/slurmctld
+SlurmctldLogFile=/var/log/slurmctld.log
+
+# Compute Nodes
+NodeName=${SLURM_HOSTNAME} State=UNKNOWN
+PartitionName=debug Nodes=${SLURM_HOSTNAME} Default=YES MaxTime=INFINITE State=UP
