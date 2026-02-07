@@ -43,8 +43,10 @@ RUN curl -O https://download.schedmd.com/slurm/slurm-${SLURM_VERSION}.tar.bz2 &&
         #--with-freeipmi
     make install
 
-RUN mkdir -p /etc/slurm /var/spool/slurmctld
+RUN mkdir -p /etc/slurm /var/spool/slurmctld /var/run /var/log/slurm
 COPY slurm.conf /etc/slurm/slurm.conf
+COPY create-slurm-key.sh /usr/local/bin/create-slurm-key.sh
+RUN chmod +x /usr/local/bin/create-slurm-key.sh && /usr/local/bin/create-slurm-key.sh
 
 EXPOSE 6817
 
