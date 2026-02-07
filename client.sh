@@ -9,6 +9,15 @@ else
     exit 1
 fi
 
+if [ -z "$RAILWAY_PROJECT_ID" ]; then
+    echo "Error: RAILWAY_PROJECT_ID is not set in railway.env."
+    exit 1
+fi
+
+echo "Using Project: $RAILWAY_PROJECT_ID"
+echo "Using Environment: $RAILWAY_ENVIRONMENT_ID"
+echo "Using Service: $RAILWAY_SERVICE_ID"
+
 if [ -z "$1" ]; then
     echo "Usage: $0 <proxy-domain:port> [command]"
     echo "Example: $0 caboose.proxy.rlwy.net:53288 sinfo -N"
