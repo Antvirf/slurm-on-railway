@@ -12,4 +12,4 @@ sed -i "s/^SlurmctldHost=.*/SlurmctldHost=$CURRENT_HOSTNAME/" /etc/slurm/slurm.c
 #sed -i "s/^PartitionName=debug Nodes=.*/PartitionName=debug Nodes=$CURRENT_HOSTNAME Default=YES MaxTime=INFINITE State=UP/" /etc/slurm/slurm.conf
 
 # Start slurmctld in the foreground
-exec /bin/sbin/slurmctld -D "$@"
+exec /bin/sbin/slurmctld -vvvv -D "$@"

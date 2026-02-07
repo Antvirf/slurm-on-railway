@@ -53,6 +53,8 @@ RUN chmod +x /usr/local/bin/entrypoint.sh
 
 EXPOSE 6817
 
+ENV PATH="/bin/bin:/bin/sbin:$PATH"
+
 # -D = run in foreground
 WORKDIR /bin/sbin
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
