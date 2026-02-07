@@ -43,6 +43,8 @@ RUN curl -O https://download.schedmd.com/slurm/slurm-${SLURM_VERSION}.tar.bz2 &&
         #--with-freeipmi
     make install
 
+EXPOSE 6817
+
 # -D = run in foreground
 WORKDIR /bin/sbin
 ENTRYPOINT ["/bin/sbin/slurmctld", "-D"]
