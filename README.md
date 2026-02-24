@@ -1,6 +1,6 @@
 # Slurm on Railway
 
-[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/deploy/m7gGiA?referralCode=6rOei9&utm_medium=integration&utm_source=template&utm_campaign=generic)
+[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/deploy/slurm-on-railway)
 
 Why? Why not. POC of running Slurm controller + container-local worker nodes on Railway. Only local dependencies are `railway` CLI and `docker`.
 
