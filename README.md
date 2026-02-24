@@ -1,17 +1,45 @@
 # Slurm on Railway
 
+[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/deploy/m7gGiA?referralCode=6rOei9&utm_medium=integration&utm_source=template&utm_campaign=generic)
+
 Why? Why not. POC of running Slurm controller + container-local worker nodes on Railway. Only local dependencies are `railway` CLI and `docker`.
 
 ## Deployment
 
-1. Deploy with railway template
-2. Create `railway.env` file with your project info
-2. Expose TCP proxy
-3. Run commands: 
+1. Deploy with railway template - be patient, the build takes about 10 minutes but subsequent deployments will be faster.
+2. Create `railway.env` file with your project info:
+
+```bash
+# After deploying the template, you can get these from the URL:
+https://railway.com/project/$PROJECT_ID/service/$SERVICE_ID?environmentId=$ENVIRONMENT_ID
+
+export RAILWAY_PROJECT_ID=xxx
+export RAILWAY_ENVIRONMENT_ID=xxx
+export RAILWAY_SERVICE_ID=xxx
+```
+
+3. From the `Settings` tab of your project, get your public domain and port - e.g. `interchange.proxy.rlwy.net:59019`
+4. Auth your Railway CLI with `railway login`
+5. Run commands using the `client.sh` wrapper:
 
 ```bash
 chmod +x client.sh
 ./client.sh <proxy-domain:port> <command>
+
+# example
+./client.sh interchange.proxy.rlwy.net:59019 scontrol ping -vvvv
+Using Project: xxx
+Using Environment: xxx
+Using Service: xxx
+--- Building Local Slurm Image ---
+sha256:639351c1520234413d42a3df8b0230e3a04e317af4a1e305bbc35e775e750759
+--- Syncing with Railway ---
+Warning: Received unknown message type: stand_by
+Remote hostname detected: 8f524205061f
+Warning: Received unknown message type: stand_by
+--- Launching Client Container ---
+scontrol: debug2: _sack_connect: connected to /run/slurm/sack.socket
+Slurmctld(primary) at 8f524205061f is UP
 ```
 
 ## Client script
