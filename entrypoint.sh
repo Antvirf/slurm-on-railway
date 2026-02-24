@@ -13,5 +13,6 @@ echo "Generating slurm.conf for hostname: $SLURM_HOSTNAME"
 envsubst < /etc/slurm/slurm.conf.template > /etc/slurm/slurm.conf
 
 # Start slurmctld in the foreground
+slurmd -vvvv -D &
 exec /bin/sbin/slurmctld -vvvv -D "$@"
 

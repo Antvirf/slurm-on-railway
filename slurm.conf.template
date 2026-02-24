@@ -6,7 +6,8 @@ CredType=cred/slurm
 SlurmUser=root
 StateSaveLocation=/var/spool/slurmctld
 SlurmctldLogFile=/var/log/slurmctld.log
+ProctrackType=proctrack/linuxproc
 
 # Compute Nodes
-NodeName=${SLURM_HOSTNAME} State=UNKNOWN
+NodeName=${SLURM_HOSTNAME} State=IDLE
 PartitionName=debug Nodes=${SLURM_HOSTNAME} Default=YES MaxTime=INFINITE State=UP
