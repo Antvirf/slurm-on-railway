@@ -42,6 +42,27 @@ scontrol: debug2: _sack_connect: connected to /run/slurm/sack.socket
 Slurmctld(primary) at 8f524205061f is UP
 ```
 
+6. Or, ssh to the container and run a local job:
+
+```bash
+source railway.env && railway ssh --project=$RAILWAY_PROJECT_ID --environment=$RAILWAY_ENVIRONMENT_ID --service=$RAILWAY_SERVICE_ID
+root@54ccd73f040a:/usr/bin/sbin# srun -v date
+srun: defined options
+srun: -------------------- --------------------
+srun: verbose             : 1
+srun: -------------------- --------------------
+srun: end of defined options
+srun: Nodes 54ccd73f040a are ready for job
+srun: jobid 6: nodes(1):`54ccd73f040a', cpu counts: 1(x1)
+srun: CpuBindType=(null type)
+srun: launching StepId=6.0 on host 54ccd73f040a, 1 tasks: 0
+srun: topology/default: init: topology Default plugin loaded
+srun: Node 54ccd73f040a, 1 tasks started
+srun: Received task exit notification for 1 task of StepId=6.0 (status=0x0000).
+srun: 54ccd73f040a: task 0: Completed
+Fri Feb 27 11:05:13 UTC 2026
+```
+
 ## Client script
 
 1. Builds a local Docker image `slurm-railway`.
